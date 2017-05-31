@@ -1,0 +1,22 @@
+{
+  "name": "nwen304_group_project",
+  "version": "1.0.0",
+  "description": "Nwen 304 group project group 16. This is the initial setup.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krishangordhan/NWEN304_Group_Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krishangordhan/NWEN304_Group_Project/issues"
+  },
+  "homepage": "https://github.com/krishangordhan/NWEN304_Group_Project#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
