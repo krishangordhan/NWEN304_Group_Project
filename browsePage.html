@@ -53,11 +53,20 @@
       </div>
       <a href="#" class="w3-bar-item w3-button ">Top 50</a>
       <a href="login.html" class="w3-bar-item w3-button w3-right">Login</a>
-      <a href="#" class="w3-bar-item w3-button w3-green w3-right">Go</a>
-      <input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search..">
+      <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-green w3-right">Go</a>
+      <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
 
     </div>
   </div>
+
+  <script>
+    function searchFunction() {
+      var x = document.getElementById("mySearch").value;
+      var url = "search.html?search="
+      window.location.href = url + x;
+    }
+    </script>
+
    <header class="w3-container w3-light-grey w3-center" style="padding:60px 8px">
     <h1 class="w3-margin w3-jumbo">Browse All Books</h1>
   </header>
