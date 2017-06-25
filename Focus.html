@@ -30,13 +30,13 @@
   .fa-coffee {
     font-size: 200px
   }
-
+  
   div.Bk {
-  	padding: 10px;
+    padding: 10px;
   }
 </style>
 
-<body>
+<body onload="parseFunction()">
 
   <!-- Navbar -->
   <div class="w3-top">
@@ -62,45 +62,55 @@
   </div>
 
   <script>
-    function searchFunction() {
-      var x = document.getElementById("mySearch").value;
-      var url = "search.html?search="
-      window.location.href = url + x;
+                         function searchFunction() {
+                           var x = document.getElementById("mySearch").value;
+                           var url = "search.html?search="
+                           window.location.href = url + x;
+                         }
+  </script>
+  <script>
+    function parseFunction() {
+      var url = document.URL;
+      var queryStart = url.indexOf("="),
+        queryEnd = url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1);
+        
     }
-    </script>
+  </script>
 
-   <header class="w3-container w3-light-grey w3-center" style="padding:60px 8px">
+  <header class="w3-container w3-light-grey w3-center" style="padding:60px 8px">
     <h1 class="w3-margin w3-jumbo">Page for a single book</h1>
   </header>
 
-  <div class="w3-container w3-padding-" style = "margin: auto; width: 50%">
-        <img src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
-        <div class="w3-container">
-          <p> We can put text here and format it to describe this said item</p>
-        </div>
-      </div>
+  <div class="w3-container w3-padding-" style="margin: auto; width: 50%">
+    <img src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
+    <div class="w3-container">
+      <p> We can put text here and format it to describe this said item</p>
+    </div>
+  </div>
 
-      <div style="margin: auto; width: 0%">
-        <button class="w3-button w3-button w3-black w3-button w3-black w3-large">Buy</button>
-      </div>
-      <!-- Footer -->
-	<footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+  <div style="margin: auto; width: 0%">
+    <button class="w3-button w3-button w3-black w3-button w3-black w3-large">Buy</button>
+  </div>
+  <!-- Footer -->
+  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
 
-    	<div class="w3-row-padding">
-
-    
-        <h4>About - this is the footer we can put anything we need to in here</h4>
-        <p><a href="#">About us</a></p>
-        <p><a href="#">We're hiring</a></p>
-        <p><a href="#">Support</a></p>
-        <p><a href="#">Shipping details</a></p>
-        <p><a href="#">Payment</a></p>
-        <p><a href="#">Return</a></p>
-        <p><a href="#">Help</a></p>
-  
+    <div class="w3-row-padding">
 
 
-      </div>
-     </footer>
-  </body>
+      <h4>About - this is the footer we can put anything we need to in here</h4>
+      <p><a href="#">About us</a></p>
+      <p><a href="#">We're hiring</a></p>
+      <p><a href="#">Support</a></p>
+      <p><a href="#">Shipping details</a></p>
+      <p><a href="#">Payment</a></p>
+      <p><a href="#">Return</a></p>
+      <p><a href="#">Help</a></p>
+
+
+
+    </div>
+  </footer>
+</body>
+
 </html>
