@@ -63,6 +63,10 @@
       var url = "search.html?search="
       window.location.href = url + x;
     }
+    function browse() {
+      sessionStorage.page = 1;
+      window.location.href = "browsePage.html";
+    }
     </script>
 
 
@@ -79,7 +83,7 @@
   <header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
     <h1 class="w3-margin w3-jumbo">NWEN 304 Group 16 Book site</h1>
     <p class="w3-xlarge">We have all the books you could ever want</p>
-    <a href="browsePage.html" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Browse Now!</a>
+    <button onclick = "browse()" type ="button" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Browse Now!</button>
   </header>
 
   <!-- First Grid -->
