@@ -15,6 +15,11 @@ $(document).ready(function(e){
            			document.getElementById("prev").innerHTML = "Prev";
 					}
 				}
+				else if(sessionStorage.page == 1){
+					$.get('https://pure-retreat-11337.herokuapp.com/page1', function(data){
+						
+					});
+				}
 			}
 			else{
 				sessionStorage.page = 1;
