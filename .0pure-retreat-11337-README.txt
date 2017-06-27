@@ -1,3 +1,9 @@
+If the folder pure-retreat-11337 is not there then make a new folder outside your group project directory then use the following:
+heroku login
+herou git:clone -a pure-retreat-11337
+
+this will make a folder for you with all the files on the heroku app
+
 If you need help whith updating the heroku code e.g adding new REST commads.
 
 -First check to see of the heroku repository is added to the pure retreat folder

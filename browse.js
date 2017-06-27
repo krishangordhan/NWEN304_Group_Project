@@ -27,6 +27,7 @@ $(document).ready(function(e){
 			}
 			else{
 				sessionStorage.page = 1;
+				loadImages();
 			}
 		}
     // Method for when next button is clicked
