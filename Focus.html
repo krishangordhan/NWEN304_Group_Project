@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<script src="Focus.js"></script>
 <style>
   body,
   h1,
@@ -36,7 +37,7 @@
   }
 </style>
 
-<body onload="parseFunction()">
+<body onload="testFunction()">
 
   <!-- Navbar -->
   <div class="w3-top">
@@ -64,48 +65,46 @@
   <script>
                          function searchFunction() {
                            var x = document.getElementById("mySearch").value;
-                           var url = "search.html?search="
+                           var url = "search.html?search=";
                            window.location.href = url + x;
                          }
   </script>
+
   <script>
-    function parseFunction() {
+    function testFunction() {
       var url = document.URL;
-      var queryStart = url.indexOf("="),
-        queryEnd = url.length + 1,
-        query = url.slice(queryStart, queryEnd - 1);
-        var queryData = getData(query);
-        processdata(queryData);
+      var queryStart = url.indexOf("=");
+      var queryEnd = url.length + 1;
+      var query = url.slice(queryStart + 1, queryEnd - 1);
+      var queryData = getData(query);
+      var list = JSON.parse(queryData);
+
     }
-    function getData(query){
-      var searchurl = "https://boiling-eyrie-15862.herokuapp.com/request?request=" + query;
-    $.ajax({
+    function getData(query2) {
+      var searchurl = "https://boiling-eyrie-15862.herokuapp.com/request?request=" + query2;
+      $.ajax({
         method: 'POST',
         url: searchurl,
         data: JSON.stringify({
-           queryTerm: query
+          queryTerm: query
         }),
-        success: function(data){
-            return (data);
+        success: function (data) {
+          return (data);
         },
-        error: function(){
-
+        error: function () {
         }
-    });
-  }
-  processData(queryData){
-    
-  }
+      });
+    }
   </script>
 
   <header class="w3-container w3-light-grey w3-center" style="padding:60px 8px">
-    <h1 class="w3-margin w3-jumbo">Page for a single book</h1>
+    <h1 id="title1" class="w3-margin w3-jumbo">Title of book</h1>
   </header>
 
   <div class="w3-container w3-padding-" style="margin: auto; width: 50%">
-    <img src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
+    <img id="img1" src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
     <div class="w3-container">
-      <p> We can put text here and format it to describe this said item</p>
+      <p id="description">Hey looks like you stumbled onto the testing page!</p>
     </div>
   </div>
 
