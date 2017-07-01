@@ -67,16 +67,34 @@ pg.connect(connectionString, function (err, client) {
 });
 
 app.post('/search', function (req, res) {
-    var searchs = req.query.search;
-    var query = cient.query("SELECT * FROM products WHERE name =" + searchs + " OR author = " + searchs + " OR isbn = " + searchs + " OR genre = " + searchs);
+    var queryStart = req.indexOf("=");
+    var queryEnd = req.length + 1;
+    var queryterm = req.slice(queryStart + 1, queryEnd - 1);
+
+    var client = new pg.Client(connectionString);
+
+    client.connect(function (err) {
+        if (err) {
+            return console.error("error in request connect", err);
+        }
+    });
+
+    query = cient.query("SELECT * FROM products WHERE name =" + searchs + " OR author = " + searchs + " OR isbn = " + searchs + " OR genre = " + searchs, function (err) {
+        if (err) {
+            return console.error("error in request query", err);
+        }
+    });
     var results = [];
-    console.log("grabbing database to search");
     query.on('row', function (row) {
         results.push(row);
     });
     query.on('end', function () {
-        client.end();
-        response.json(results);
+        client.end(function (err) {
+            console.log(results);
+            if (err) { return console.error("error in request end", err); }
+            var list = JSON.stringify(results);
+            res.send(list);
+        });
     });
 
 

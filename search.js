@@ -23,6 +23,7 @@ function getSearch(){
 }
 
 function parseSearch(){
+    alert("test");
         var url = document.URL;
         var queryStart = url.indexOf("="),
             queryEnd = url.length+1

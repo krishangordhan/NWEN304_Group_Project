@@ -89,7 +89,10 @@
           queryTerm: query
         }),
         success: function (data) {
-          return (data);
+          var list = JSON.parse(data);
+
+          document.getElementById("img1").src = list[0].image_link;
+          document.getElementById("title1").innerHTML = list[0].book_name;
         },
         error: function () {
         }
