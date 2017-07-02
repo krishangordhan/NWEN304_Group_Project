@@ -1,1 +1,0 @@
-Dont use this folder for the pure-retreat heroku stuff use the pure-retreat-11337 folder instead
