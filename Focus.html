@@ -20,18 +20,18 @@
   h6 {
     font-family: "Lato", sans-serif
   }
-  
+
   .w3-bar,
   h1,
   button {
     font-family: "Montserrat", sans-serif
   }
-  
+
   .fa-anchor,
   .fa-coffee {
     font-size: 200px
   }
-  
+
   div.Bk {
     padding: 10px;
   }
@@ -43,7 +43,7 @@
   <div class="w3-top">
     <div class="w3-bar w3-border w3-grey w3-large">
       <a href="index.html" class="w3-bar-item w3-button ">Home</a>
-      <div class="w3-dropdown-hover">
+      <!--<div class="w3-dropdown-hover">
         <button class="w3-button ">Books</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
           <a href="#" class="w3-bar-item w3-button">Fiction</a>
@@ -53,21 +53,39 @@
           <a href="#" class="w3-bar-item w3-button">Test 2</a>
           <a href="#" class="w3-bar-item w3-button">I ahve no clue what to put here</a>
         </div>
-      </div>
-      <a href="#" class="w3-bar-item w3-button ">Top 50</a>
+      </div>-->
+      <a href="browsePage.html" class="w3-bar-item w3-button ">Top 50</a>
       <a href="login.html" class="w3-bar-item w3-button w3-right">Login</a>
       <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-green w3-right">Go</a>
       <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
 
     </div>
   </div>
+  
+  <header class="w3-container w3-light-grey w3-center" style="padding:60px 8px">
+    <h1 id="title1" class="w3-margin w3-jumbo">Title of book</h1>
+  </header>
+
+  <div class="w3-container w3-padding-" style="margin: auto; width: 50%">
+    <img id="img1" src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
+    <div class="w3-container">
+      <p id="author">By abc</p>
+      <p id="description">Hey looks like you stumbled onto the testing page!</p>
+      <p id="price"> Price</p>
+    </div>
+  </div>
+
+  <div style="margin: auto; width: 0%">
+    <button class="w3-button w3-button w3-black w3-button w3-black w3-large">Buy</button>
+    <!--// put function in here to update user database.-->
+  </div>
 
   <script>
-                         function searchFunction() {
-                           var x = document.getElementById("mySearch").value;
-                           var url = "search.html?search=";
-                           window.location.href = url + x;
-                         }
+    function searchFunction() {
+      var x = document.getElementById("mySearch").value;
+      var url = "search.html?search=";
+      window.location.href = url + x;
+    }
   </script>
 
   <script>
@@ -77,22 +95,39 @@
       var queryEnd = url.length + 1;
       var query = url.slice(queryStart + 1, queryEnd - 1);
       var queryData = getData(query);
-      var list = JSON.parse(queryData);
+      updateTable(query);
 
     }
     function getData(query2) {
       var searchurl = "https://boiling-eyrie-15862.herokuapp.com/request?request=" + query2;
       $.ajax({
-        method: 'POST',
+        method: 'GET',
         url: searchurl,
         data: JSON.stringify({
           queryTerm: query
         }),
         success: function (data) {
           var list = JSON.parse(data);
-
           document.getElementById("img1").src = list[0].image_link;
           document.getElementById("title1").innerHTML = list[0].book_name;
+          document.getElementById("description").innerHTML = list[0].description;
+          document.getElementById("price").innerHTML= "$"+list[0].price;
+          document.getElementById("author").innerHTML = "By "+ list[0].author;
+          return list;
+        },
+        error: function () {
+        }
+      });
+    }
+    function updateData(query3) {
+      var searchurl = "https://boiling-eyrie-15862.herokuapp.com/pageVisited?="+query3;
+      $.ajax({
+        method: 'POST',
+        url: searchurl,
+        data: JSON.stringify({
+          queryTerm: query
+        }),
+        success: function () {
         },
         error: function () {
         }
@@ -100,20 +135,6 @@
     }
   </script>
 
-  <header class="w3-container w3-light-grey w3-center" style="padding:60px 8px">
-    <h1 id="title1" class="w3-margin w3-jumbo">Title of book</h1>
-  </header>
-
-  <div class="w3-container w3-padding-" style="margin: auto; width: 50%">
-    <img id="img1" src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
-    <div class="w3-container">
-      <p id="description">Hey looks like you stumbled onto the testing page!</p>
-    </div>
-  </div>
-
-  <div style="margin: auto; width: 0%">
-    <button class="w3-button w3-button w3-black w3-button w3-black w3-large">Buy</button>
-  </div>
   <!-- Footer -->
   <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
 

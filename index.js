@@ -131,6 +131,25 @@ app.get('/request', function (req, res) {
     });
 });
 
+app.post('/updateData', function(req, res){
+    var queryStart = req.indexOf("=");
+    var queryEnd = req.length + 1;
+    var queryterm = req.slice(queryStart + 1, queryEnd - 1);
+
+    var client = new pg.Client(connectionString);
+    client.connect(function (err) {
+        if (err) {
+            return console.error("error in request connect", err);
+        }
+    });
+
+    query = client.query("UPDATE products SET no_visitors = no_visitors + 1 WHERE id = " + queryterm, function (err) {
+        if (err) {
+            return console.error("error in updateData query", err);
+        }
+    });
+})
+
 /*
 // required for passport
 app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
