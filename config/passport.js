@@ -1,12 +1,17 @@
-var passport = require('passport')
+// config/passport.js
+
+
+// load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
+
+// load up the user model
 var bcrypt = require('bcrypt-nodejs');
 const express = require('express');
 const router = express.Router();
 const pg = require('pg');
 const path = require('path');
 const connectionString = "postgres://dtxszhltugvtsq:aef48216097f039b8eae0cb71c9f2f65a1c099160f9686b8681ee3a10b48a95b@ec2-50-19-218-160.compute-1.amazonaws.com:5432/d5d77orodbj15i";
-var databaseName= 'client-data';
+
 
 //set up db connection
 
@@ -19,11 +24,7 @@ var databaseName= 'client-data';
  
 
 
-pg.defaults.ssl = true;
-pg.connect(connectionString, function (err, client) {
-    if (err) throw err;
-    console.log('Connected to postgres! Getting schemas...');
-});
+
 
 
 module.exports = function(passport) {
@@ -54,20 +55,24 @@ module.exports = function(passport) {
 
     passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
-        usernameField : 'username',
+        emailField : 'email',
         passwordField : 'password',
 		
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, email, password, done) {
-
-        // asynchronous
-        // User.findOne wont fire unless data is sent back
+		//open connection
+        pg.defaults.ssl = true;
+		pg.connect(connectionString, function (err, client,done) {
+			if (err) throw err;
+			done();
+			console.log('Connected to postgres! Getting schemas...');
+			});
        
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-       connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) { //replace with psql search
+		client.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) { 
             // if there are any errors, return the error
             if (err)
                 return done(err);
@@ -76,16 +81,7 @@ module.exports = function(passport) {
              if (rows.length) {
                     return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
                 } else {
-			/*	
-				//add entries into psql database
-				var queryString = "INSERT INTO client-data (username, email, password, first_name, last_name, street, suburb, city, postcode) VALUES (" + "'" + [user.id, user.first_name, user.last_name].join("','") + "'" + ")";
-            console.log(queryString);
-            client.query(queryString, function (error, result) {
-                console.log(result.rows);
-                done();
-            });
-				
-*/
+		
                 // if there is no user with that email
                 // create the user
                  var newUser = {
@@ -95,7 +91,7 @@ module.exports = function(passport) {
 
                     var insertQuery = "INSERT INTO users ( username, password ) values (?,?)";
 
-                    connection.query(insertQuery,[newUser.username, newUser.password],function(err, rows) {
+                    client.query(insertQuery,[newUser.username, newUser.password],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
                         return done(null, newUserMysql);
@@ -107,12 +103,7 @@ module.exports = function(passport) {
         
 
     }));
-
-
-
-// config/passport.js
-
-
+	
 
     // =========================================================================
     // LOCAL LOGIN =============================================================
@@ -123,13 +114,24 @@ module.exports = function(passport) {
    passport.use(
         'local-login',
         new LocalStrategy({
+			
+			
             // by default, local strategy uses username and password, we will override with email
             usernameField : 'username',
             passwordField : 'password',
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) { // callback with email and password from our form
-            connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
+		
+		//open connection
+        pg.defaults.ssl = true;
+		pg.connect(connectionString, function (err, client,done) {
+			if (err) throw err;
+			done();
+			console.log('Connected to postgres! Getting schemas...');
+			});
+		
+            client.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
                 if (err)
                     return done(err);
                 if (!rows.length) {
@@ -147,3 +149,5 @@ module.exports = function(passport) {
     }));
 
 };
+
+//create table users(id BIGSERIAL PRIMARY KEY UNIQUE, username VARCHAR(20) NOT NULL UNIQUE, password CHAR(60) NOT NULL);
