@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src="_js/jquery.min.js"></script>
+<script src="_js/jquery-ui.min.js"></script>
 <script src="search.js"></script>
 <style>
   body,
@@ -163,34 +163,137 @@
       var queryStart = url.indexOf("=");
       var queryEnd = url.length + 1;
       var query = url.slice(queryStart + 1, queryEnd - 1);
-      var queryData = getData(query);
-      var list = JSON.parse(queryData);
+      var queryFixed = query.replace(/%20/g, " ");
+      var queryData = getData(queryFixed);
+
+      //var list = JSON.parse(queryData);
 
     }
     function getData(query2) {
+
       var searchurl = "https://boiling-eyrie-15862.herokuapp.com/search?search=" + query2;
-      $.ajax({
-        method: 'GET',
-        url: searchurl,
-        data: JSON.stringify({
-          queryTerm: query
-        }),
-        success: function (data) {
-          var list = JSON.parse(data);
+      // $.ajax({
+      //   method: 'GET',
+      //   url: searchurl,
+      //   data: JSON.stringify({
+      //     queryTerm: query
+      //   }),
+      //   success: function (data) {
+      //     var list = JSON.parse(data);
 
 
-          for (var i = 0; i < list.length; i++) {
+      //     for (var i = 0; i < list.length; i++) {
 
-            document.getElementById("img" + (i + 1)).src = list[i].image_link;
-            document.getElementById("title" + (i + 1)).innerHTML = list[i].book_name;
-            doucment.getElementById("link" + (i+1)).href = "Focus.html?=" + list[i].isbn; 
+      //       document.getElementById("img" + (i + 1)).src = list[i].image_link;
+      //       document.getElementById("title" + (i + 1)).innerHTML = list[i].book_name;
+      //       doucment.getElementById("link" + (i+1)).href = "Focus.html?=" + list[i].isbn; 
 
+      //     }
+
+      //   },
+      //   error: function () {
+      //   }
+      // });
+      var list2 = [];
+      var listIndex = 0;
+      $.get('https://pure-retreat-11337.herokuapp.com/page1', function (data) {
+        var list = JSON.parse(data);
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2) {
+
+            list2[listIndex] = list[i];
+            listIndex++;
           }
-
-        },
-        error: function () {
+          if (list[i].book_name == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
         }
       });
+      $.get('https://pure-retreat-11337.herokuapp.com/page2', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+          if (list[i].book_name == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+        }
+      });
+      $.get('https://pure-retreat-11337.herokuapp.com/page3', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+          if (list[i].book_name == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+
+        }
+      });
+      $.get('https://pure-retreat-11337.herokuapp.com/page4', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+          if (list[i].book_name == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+
+        }
+      });
+      $.get('https://pure-retreat-11337.herokuapp.com/page5', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+          if (list[i].book_name == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+
+        }
+      });
+      $.get('https://pure-retreat-11337.herokuapp.com/page6', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 5; i++) {
+
+          if (list[i].isbn == query2) {
+
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+          if (list[i].book_name == query2) {
+            list2[listIndex] = list[i];
+            listIndex++;
+          }
+
+        }
+        for (var i = 0; i < list2.length; i++) {
+
+          document.getElementById("img" + (i + 1)).src = list[i].image_link;
+          document.getElementById("title" + (i + 1)).innerHTML = list[i].book_name;
+          document.getElementById("link" + (i + 1)).href = "Focus.html?=" + list[i].isbn;
+        }
+      });
+
+
     }
   </script>
 

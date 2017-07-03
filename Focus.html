@@ -69,9 +69,9 @@
   <div class="w3-container w3-padding-" style="margin: auto; width: 50%">
     <img id="img1" src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="margin: auto; display: block">
     <div class="w3-container">
-      <p id="author">By abc</p>
-      <p id="description">Hey looks like you stumbled onto the testing page!</p>
-      <p id="price"> Price</p>
+      <p id="author"></p>
+      <p id="description"></p>
+      <p id="price"></p>
     </div>
   </div>
 
@@ -101,34 +101,90 @@
     }
     function getData(query2) {
       var searchurl = "https://boiling-eyrie-15862.herokuapp.com/request?request=" + query2;
+      // $.ajax({
+      //   method: 'GET',
+      //   url: searchurl,
+      //   data: JSON.stringify({
+      //     queryTerm: query
+      //   }),
+      //   success: function (data) {
 
-      // $.get(searchurl, function (data) {
-      //   var list = JSON.parse(data);
-      //   document.getElementById("img1").src = list[0].image_link;
-      //   document.getElementById("title1").innerHTML = list[0].book_name;
-      //   document.getElementById("description").innerHTML = list[0].description;
-      //   document.getElementById("price").innerHTML = "$" + list[0].price;
-      //   document.getElementById("author").innerHTML = "By " + list[0].author;
-      //   return list;
+      //     var list = JSON.parse(data);
+      //     document.getElementById("img1").src = list[0].image_link;
+      //     document.getElementById("title1").innerHTML = list[0].book_name;
+      //     document.getElementById("description").innerHTML = list[0].description;
+      //     document.getElementById("price").innerHTML= "$"+list[0].price;
+      //     document.getElementById("author").innerHTML = "By "+ list[0].author;
+      //     return list;
+      //   },
+      //   error: function () {
+      //     alert("failed to get database loading base page.");
+      //   }
       // });
-      $.ajax({
-        method: 'GET',
-        url: searchurl,
-        data: JSON.stringify({
-          queryTerm: query
-        }),
-        success: function (data) {
+      $.get('https://pure-retreat-11337.herokuapp.com/page1', function (data) {
+        var list = JSON.parse(data);
 
-          var list = JSON.parse(data);
-          document.getElementById("img1").src = list[0].image_link;
-          document.getElementById("title1").innerHTML = list[0].book_name;
-          document.getElementById("description").innerHTML = list[0].description;
-          document.getElementById("price").innerHTML= "$"+list[0].price;
-          document.getElementById("author").innerHTML = "By "+ list[0].author;
-          return list;
-        },
-        error: function () {
-          alert("failed to get database loading base page.");
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2){
+          document.getElementById("img" + (1)).src = list[i].image_link;
+          document.getElementById("title" + (1)).innerHTML = list[i].book_name;
+          }
+          
+        }
+      });
+       $.get('https://pure-retreat-11337.herokuapp.com/page2', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2){
+          document.getElementById("img" + (1)).src = list[i].image_link;
+          document.getElementById("title" + (1)).innerHTML = list[i].book_name;
+          }
+          
+        }
+      });
+       $.get('https://pure-retreat-11337.herokuapp.com/page3', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2){
+          document.getElementById("img" + (1)).src = list[i].image_link;
+          document.getElementById("title" + (1)).innerHTML = list[i].book_name;
+          }
+          
+        }
+      });
+       $.get('https://pure-retreat-11337.herokuapp.com/page4', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2){
+          document.getElementById("img" + (1)).src = list[i].image_link;
+          document.getElementById("title" + (1)).innerHTML = list[i].book_name;
+          }
+          
+        }
+      });
+       $.get('https://pure-retreat-11337.herokuapp.com/page5', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 9; i++) {
+          if (list[i].isbn == query2){
+          document.getElementById("img" + (1)).src = list[i].image_link;
+          document.getElementById("title" + (1)).innerHTML = list[i].book_name;
+          }
+          
+        }
+      });
+       $.get('https://pure-retreat-11337.herokuapp.com/page6', function (data) {
+        var list = JSON.parse(data);
+
+        for (var i = 0; i < 5; i++) {
+          if (list[i].isbn == query2){
+          document.getElementById("img" + (1)).src = list[i].image_link;
+          document.getElementById("title" + (1)).innerHTML = list[i].book_name;
+          }
+          
         }
       });
     }
