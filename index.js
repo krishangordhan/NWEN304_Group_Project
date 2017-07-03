@@ -19,8 +19,8 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({	extended: true})); // get information from html forms
 app.use(bodyParser.json());
-app.use(express.static(path.join(config.root, '/')));
-app.set('views', config.root);
+app.use(express.static(__dirname));
+app.set('views', __dirname);
 app.engine('html', require('ejs').renderFile);
 
 
