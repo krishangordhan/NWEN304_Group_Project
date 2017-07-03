@@ -24,13 +24,11 @@ app.engine('html', require('ejs').renderFile);
 
 
 app.listen(port, function () {
-<<<<<<< HEAD
+
  console.log('Example app listening on port 8080!');
 }); 
 
-=======
-    console.log('Example app listening on port 8080!');
-});
+
 
 
 
