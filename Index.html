@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="_js/jquery.min.js"></script>
+<script src="_js/jquery-ui.min.js"></script>
+
 <style>
   body,
   h1,
@@ -35,8 +38,8 @@
   <!-- Navbar -->
   <div class="w3-top">
     <div class="w3-bar w3-border w3-grey w3-large">
-      <a href="index.html" class="w3-bar-item w3-button ">Home</a>
-      <div class="w3-dropdown-hover">
+      <a href="/" class="w3-bar-item w3-button ">Home</a>
+      <!--<div class="w3-dropdown-hover">
         <button class="w3-button ">Books</button>
         <div class="w3-dropdown-content w3-bar-block w3-card-4">
           <a href="#" class="w3-bar-item w3-button">Fiction</a>
@@ -46,14 +49,26 @@
           <a href="#" class="w3-bar-item w3-button">Test 2</a>
           <a href="#" class="w3-bar-item w3-button">I ahve no clue what to put here</a>
         </div>
-      </div>
-      <a href="#" class="w3-bar-item w3-button ">Top 50</a>
-      <a href="login.html" class="w3-bar-item w3-button w3-right">Login</a>
-      <a href="#" class="w3-bar-item w3-button w3-green w3-right">Go</a>
-      <input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search..">
+      </div>-->
+      <a href="/browsePage" class="w3-bar-item w3-button ">Top 50</a>
+      <a href="/login" class="w3-bar-item w3-button w3-right">Login</a>
+      <a button onclick="searchFunction()" class="w3-bar-item w3-button w3-green w3-right">Go</a>
+      <input type="search" id="mySearch" class="w3-bar-item w3-input w3-right" placeholder="Search..">
 
     </div>
   </div>
+
+  <script>
+    function searchFunction() {
+      var x = document.getElementById("mySearch").value;
+      var url = "search.html?search="
+      window.location.href = url + x;
+    }
+    function browse() {
+      sessionStorage.page = 1;
+      window.location.href = "/browsePage";
+    }
+    </script>
 
 
   <!-- Navbar on small screens -->
@@ -69,11 +84,11 @@
   <header class="w3-container w3-light-grey w3-center" style="padding:128px 16px">
     <h1 class="w3-margin w3-jumbo">NWEN 304 Group 16 Book site</h1>
     <p class="w3-xlarge">We have all the books you could ever want</p>
-    <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Browse Now!</button>
+    <button onclick = "browse()" type ="button" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Browse Now!</button>
   </header>
 
   <!-- First Grid -->
-  <div class="w3-row-padding w3-container">
+  <!--<div class="w3-row-padding w3-container">
     <div class="w3-content">
       <div class="w3-third">
         <img src="Images/sample_Image_usedinexample.jpg" alt="exampleImage" style="width:100%">
@@ -91,7 +106,7 @@
           <p> We can probably jsut read any value from the database and put it in here, and format as needed.</p>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <!-- Second Grid -->
 
