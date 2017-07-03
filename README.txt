@@ -16,7 +16,9 @@ This is the main readme file for the document and what was required for the asse
     author. The browsing has 6 pages that can be flipped through with the next and previous buttons at the bottom of the page. Clicking on one of those books displays more information and the buy
     button which is currently not available.
 
-2. 
+2. What the REST interface is?
+    We used mostly get statements and some post statements as we were accessing the servers for information on the database for the most part other then the registration servers
+    otherwise it was get statements to access the database as we needed, that was the main use of our REST interface, we also used it with the implementation of passport.
 
 3. What error handling has been implemented in your system?
     For the html we used alert statements and when the desired functionality was achieved they were commented out and removed. The reason for alert statements was not all browsers
