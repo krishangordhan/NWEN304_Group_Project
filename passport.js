@@ -2,17 +2,15 @@
 
 
 // load all the things we need
-var LocalStrategy   = require('passport-local').Strategy;
+
 
 // load up the user model
 var bcrypt = require('bcrypt-nodejs');
-const express = require('express');
-const router = express.Router();
-const pg = require('pg');
-const path = require('path');
-const connectionString = "postgres://dtxszhltugvtsq:aef48216097f039b8eae0cb71c9f2f65a1c099160f9686b8681ee3a10b48a95b@ec2-50-19-218-160.compute-1.amazonaws.com:5432/d5d77orodbj15i";
+var	LocalStrategy   = require('passport-local').Strategy;
+var	pg = require('pg');
+var	connectionString = "postgres://dtxszhltugvtsq:aef48216097f039b8eae0cb71c9f2f65a1c099160f9686b8681ee3a10b48a95b@ec2-50-19-218-160.compute-1.amazonaws.com:5432/d5d77orodbj15i";
 
-
+	
 //set up db connection
 
 // expose this function to our app using module.exports

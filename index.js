@@ -12,7 +12,7 @@ var session = require('express-session');
 //connecting to Postgres locally
 var connectionString = "postgres://dtxszhltugvtsq:aef48216097f039b8eae0cb71c9f2f65a1c099160f9686b8681ee3a10b48a95b@ec2-50-19-218-160.compute-1.amazonaws.com:5432/d5d77orodbj15i";
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./passport')(passport); // pass passport for configuration
 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -136,4 +136,4 @@ app.use(session({ secret: 'nwen304webdevelopment',
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport*/
+require('./routes.js')(app, passport); // load our routes and pass in our app and fully configured passport*/
