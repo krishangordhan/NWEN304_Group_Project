@@ -7,8 +7,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src="_js/jquery.min.js"></script>
+<script src="_js/jquery-ui.min.js"></script>
+
 <style>
     body,
     h1,
@@ -117,53 +118,53 @@
     <h1> Register</h1>
   </header>
 
-    <form action="#">
+    <form name='registation'  action='/signup' method="post">
 
-        <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-        </div>
-        <div class="container">
+         <div class="regist_form">
             <label><b>Email</b></label>
             <input type="text" placeholder="E-Mail" name="email" required>
         </div>
-        <div class="container">
-            <label><b>confEmail</b></label>
+		<!--
+        <div class="regist_form">
+            <label><b>Confirm Email</b></label>
             <input type="text" placeholder="Confirm E-Mail" name="confemail" required>
         </div>
-        <div class="container">
+		-->
+        <div class="regist_form">
             <label><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
         </div>
-        <div class="container">
-            <label><b>confPassword</b></label>
+		<!--
+        <div class="regist_form">
+            <label><b>Confirm Password</b></label>
             <input type="password" placeholder="Confirm Password" name="confpsw" required>
         </div>
-		<div class="container">
+		<div class="regist_form">
             <label><b>First Name</b></label>
             <input type="text" placeholder="First Name" name="firstname" required>
         </div>
-		<div class="container">
+		<div class="regist_form">
             <label><b>Last Name</b></label>
             <input type="text" placeholder="Last Name" name="lastname" required>
         </div>
-		<div class="container">
-            <label><b>Street Name</b></label>
-            <input type="text" placeholder="Street Name" name="street" required>
+		<div class="regist_form">
+            <label><b>Address</b></label>
+            <input type="text" placeholder="Street Name" name="address" required>
         </div>
-		<div class="container">
+		<div class="regist_form">
             <label><b>Suburb</b></label>
             <input type="text" placeholder="Suburb" name="suburb" required>
         </div>
-		<div class="container">
+		<div class="regist_form">
             <label><b>City</b></label>
             <input type="text" placeholder="City" name="city" required>
         </div>
-		<div class="container">
+		<div class="regist_form">
             <label><b>Post Code</b></label>
             <input type="text" placeholder="Post Code" name="postcode" required>
         </div>
-		<div class="container">
+		-->
+		<div class="regist_form">
             <button type="submit" class="submitButton">Register</button>
             
         </div>

@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src="_js/jquery.min.js"></script>
+<script src="_js/jquery-ui.min.js"></script>
 <style>
     body,
     h1,
@@ -111,25 +111,25 @@
       window.location.href = url + x;
     }
     </script>
-
+	
       <!-- Header -->
   <header class="w3-container w3-white" style="padding:40px 10px">
     <h1> Login Field</h1>
   </header>
 
-    <form action="#">
+    <form action="/login" method="post">
 
-        <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+        <div class="login">
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
         </div>
-        <div class="container">
+        <div class="login">
             <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="password" required>
         </div>
-        <div class="container">
+        <div class="login">
             <button type="submit" class="submitButton">Login</button>
-            <button type="button" class="registerButton"><a href="Register.html"> Register</button>
+            <button type="button" class="registerButton"><a href="registration.html"> Register</button>
         </div>
 
 
