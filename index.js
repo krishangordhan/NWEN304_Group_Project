@@ -43,7 +43,7 @@ pg.connect(connectionString, function (err, client) {
         });
 });
 
-app.post('/search', function (req, res) {
+app.get('/search', function (req, res) {
     var queryStart = req.indexOf("=");
     var queryEnd = req.length + 1;
     var queryterm = req.slice(queryStart + 1, queryEnd - 1);
