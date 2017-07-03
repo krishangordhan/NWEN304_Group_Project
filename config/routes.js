@@ -5,7 +5,16 @@ module.exports = function(app, passport) {
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/', function(req, res) {
-		res.render('index.html'); // load the index.ejs file
+		res.render('index.html'); 
+	});
+	
+	app.get('/browsePage', function(req, res) {
+		res.render('browsePage.html'); 
+		
+	});
+	
+	app.get('/Foucs', function(req, res) {
+		res.send('Focus.html'); 
 	});
 
 	// =====================================
@@ -41,7 +50,7 @@ module.exports = function(app, passport) {
 	// show the signup form
 	app.get('/signup', function(req, res) {
 		// render the page and pass in any flash data if it exists
-		res.render('signup.ejs', { message: req.flash('signupMessage') });
+		res.render('registration.html', { message: req.flash('signupMessage') });
 	});
 
 	// process the signup form

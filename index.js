@@ -1,6 +1,7 @@
 var express = require('express');
 var pg = require('pg');
 var app = express();
+var http = require('http');
 var port = process.env.PORT || 8080;
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -17,10 +18,9 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({	extended: true})); // get information from html forms
 app.use(bodyParser.json());
-app.use(express.static('public'));
-
+app.use(express.static(__dirname));
+app.set('views', __dirname);
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
 
 
 app.listen(port, function () {
