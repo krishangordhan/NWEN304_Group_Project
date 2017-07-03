@@ -1,0 +1,30 @@
+-If the folder pure-retreat-11337 is not there then make a new folder outside your group project directory then use the following:
+ -heroku login
+ -herou git:clone -a pure-retreat-11337
+ -
+ -this will make a folder for you with all the files on the heroku app
+ -
+ -If you need help whith updating the heroku code e.g adding new REST commads.
+ -
+ --First check to see of the heroku repository is added to the pure retreat folder
+ -	type: git remote -v
+ -	into a console opened inside of the pure-retreat-11337 folder
+ -
+ --You should see the following lines included in the list:
+ -	heroku  https://git.heroku.com/pure-retreat-11337.git (fetch)
+ -	heroku  https://git.heroku.com/pure-retreat-11337.git (push)
+ -
+ --If you dont use this command:
+ -	heroku git:remote -a pure-retreat-11337
+ -	you should only have to do this once
+ -
+ --Now if you make some changes you want to push to heroku:
+ -	first type: 	git status
+ -	this should list what changes you made
+ -	next type:	git add filename
+ -	for each file you want to update
+ -	now type git commit -m "some message here"
+ -	ALWAYS PUT A MESSAGE EVEN IF YOU DONT WANT TO TYPE SOMETHING. that gave me a lot of trouble so at least put something there
+ -	Next type: git push heroku master
+ -	And that will update the heroku repository
+ -

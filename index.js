@@ -105,9 +105,6 @@ app.get('/request', function (req, res) {
     });
 });
 
-<<<<<<< HEAD
-
-=======
 app.post('/updateData', function(req, res){
     var queryStart = req.indexOf("=");
     var queryEnd = req.length + 1;
@@ -128,7 +125,6 @@ app.post('/updateData', function(req, res){
 })
 
 /*
->>>>>>> 174a5413aa9b61ab8b71869e24f12757b6d1d121
 // required for passport
 app.use(session({ secret: 'nwen304webdevelopment',
 	resave: true,
@@ -136,4 +132,4 @@ app.use(session({ secret: 'nwen304webdevelopment',
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport*/
