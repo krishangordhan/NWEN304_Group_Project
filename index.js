@@ -105,9 +105,7 @@ app.get('/request', function (req, res) {
     });
 });
 
-<<<<<<< HEAD
 
-=======
 app.post('/updateData', function(req, res){
     var queryStart = req.indexOf("=");
     var queryEnd = req.length + 1;
@@ -127,8 +125,7 @@ app.post('/updateData', function(req, res){
     });
 })
 
-/*
->>>>>>> 174a5413aa9b61ab8b71869e24f12757b6d1d121
+
 // required for passport
 app.use(session({ secret: 'nwen304webdevelopment',
 	resave: true,
