@@ -17,7 +17,10 @@ app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({	extended: true})); // get information from html forms
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 
 app.listen(port, function () {
@@ -105,10 +108,7 @@ app.get('/request', function (req, res) {
     });
 });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> fc26a711be32ef66b45be1fc83666760477e4cc2
 app.post('/updateData', function(req, res){
     var queryStart = req.indexOf("=");
     var queryEnd = req.length + 1;
@@ -128,11 +128,7 @@ app.post('/updateData', function(req, res){
     });
 })
 
-<<<<<<< HEAD
 
-=======
-/*
->>>>>>> fc26a711be32ef66b45be1fc83666760477e4cc2
 // required for passport
 app.use(session({ secret: 'nwen304webdevelopment',
 	resave: true,
