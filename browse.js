@@ -98,10 +98,12 @@ $(document).ready(function(e){
               
               document.getElementById("img"+(i+1)).src = list[i].image_link;
               document.getElementById("title"+(i+1)).innerHTML = list[i].book_name;
+              document.getElementById("link"+(i+1)).href = "Focus.html?=" + list[i].isbn;
             }
             for(var j = 5; j< 9; j++){
               document.getElementById("img"+(j+1)).src = "";
               document.getElementById("title"+(j+1)).innerHTML = "";
+              document.getElementById("link"+(i+1)).href = "Focus.html?=";
             }
           });
     }
@@ -109,15 +111,19 @@ $(document).ready(function(e){
           $.get('https://pure-retreat-11337.herokuapp.com/page'+sessionStorage.page, function(data){
             var list = JSON.parse(data);
             
-            
-            for(var i = 0; i < 9; i++){
+                        for(var i = 0; i < 9; i++){
               
               document.getElementById("img"+(i+1)).src = list[i].image_link;
               document.getElementById("title"+(i+1)).innerHTML = list[i].book_name;
+              document.getElementById("link"+(i+1)).href = "Focus.html?=" + list[i].isbn;
             }
           });
         }
         $(this).scrollTop(0);
+  }
+
+  window.linkFocus = function(){
+  	
   }
 
 });

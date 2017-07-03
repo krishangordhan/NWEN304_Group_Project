@@ -1,0 +1,17 @@
+1. cURL to the main get statement to check server is running
+Result: SHould displat 'Hello World!'
+
+cURL https://boiling-eyrie-15862.herokuapp.com/
+
+2. A cURL get for the results of the browsing page.
+Result: An array of the database for the browsing page 6.
+
+cURL https://pure-retreat-11337.herokuapp.com/page6
+
+3. cURL to get the info of the array of a certain book
+Result: the database array row for Game of Thrones
+
+cURL https://boiling-eyrie-15862.herokuapp.com/request?request=9780006479888
+
+4. 
+
