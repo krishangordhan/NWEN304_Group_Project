@@ -5,7 +5,7 @@ module.exports = function(app, passport) {
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/', function(req, res) {
-		res.render('index'); 
+		res.render('index.html'); 
 	});
 	
 	app.get('/browsePage', function(req, res) {
