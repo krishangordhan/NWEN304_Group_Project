@@ -5,16 +5,16 @@ module.exports = function(app, passport) {
 	// HOME PAGE (with login links) ========
 	// =====================================
 	app.get('/', function(req, res) {
-		res.render('index.html'); 
+		res.sendFile(__dirname + '/index.html'); 
 	});
 	
 	app.get('/browsePage', function(req, res) {
-		res.render('browsePage.html'); 
+		res.sendFile(__dirname + '/browsePage.html'); 
 		
 	});
 	
 	app.get('/Foucs', function(req, res) {
-		res.send('Focus.html'); 
+		res.send(__dirname + '/Focus.html'); 
 	});
 
 	// =====================================
@@ -24,7 +24,7 @@ module.exports = function(app, passport) {
 	app.get('/login', function(req, res) {
 
 		// render the page and pass in any flash data if it exists
-		res.render('login.html', { message: req.flash('loginMessage') });
+		res.sendFile(__dirname + '/login.html', { message: req.flash('loginMessage') });
 	});
 
 	// process the login form
@@ -50,7 +50,7 @@ module.exports = function(app, passport) {
 	// show the signup form
 	app.get('/signup', function(req, res) {
 		// render the page and pass in any flash data if it exists
-		res.render('registration.html', { message: req.flash('signupMessage') });
+		res.sendFile(__dirname +'/registration.html', { message: req.flash('signupMessage') });
 	});
 
 	// process the signup form
@@ -66,7 +66,7 @@ module.exports = function(app, passport) {
 	// we will want this protected so you have to be logged in to visit
 	// we will use route middleware to verify this (the isLoggedIn function)
 	app.get('/checkout', isLoggedIn, function(req, res) {
-		res.render('checkout.html', {
+		res.sendFile(__dirname + 'checkout.html', {
 			user : req.user // get the user out of session and pass to template
 		});
 	});
