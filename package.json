@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Nwen 304 group project group 16. This is the initial setup.",
   "main": "index.js",
+  "engines": {
+    "node": "7.9.0",
+	"npm": "4.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
